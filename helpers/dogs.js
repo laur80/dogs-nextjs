@@ -2,7 +2,7 @@ export const dogs = [
 	{
 		name: 'whiskey',
 		age: 5,
-		src: '/whiskey.jpg',
+		src: '/whiskey.png',
 		facts: [
 			'Whiskey loves eating popcorn.',
 			'Whiskey is a terrible guard dog.',
@@ -12,7 +12,7 @@ export const dogs = [
 	{
 		name: 'hazel',
 		age: 3,
-		src: '/hazel.jpg',
+		src: '/hazel.png',
 		facts: [
 			'Hazel has soooo much energy!',
 			'Hazel is highly intelligent.',
@@ -22,7 +22,7 @@ export const dogs = [
 	{
 		name: 'tubby',
 		age: 4,
-		src: '/tubby.jpg',
+		src: '/tubby.png',
 		facts: [
 			'Tubby is not the brightest dog',
 			'Tubby does not like walks or exercise.',
