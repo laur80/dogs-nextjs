@@ -1,11 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { dogs } from '../helpers/dogs';
-import Navbar from '../compo/Navbar';
+
 function DogList() {
 	return (
 		<>
-			{/* <Navbar /> */}
 			<div className='DogList'>
 				<h1 className='display-1 text-center mt-3 mb-5'>Dog List!</h1>
 				<div className='row'>

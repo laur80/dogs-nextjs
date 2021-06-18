@@ -1,0 +1,10 @@
+{
+	"dogs": [
+		{
+			"name": "hotdog",
+			"age": "5",
+			"src": "/whiskey.jpg",
+			"facts": "Hotdogs loves eating ketchup."
+		}
+	]
+}

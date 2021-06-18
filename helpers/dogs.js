@@ -30,3 +30,8 @@ export const dogs = [
 		],
 	},
 ];
+export function getDog(id) {
+	let d = dogs.find((dog) => dog.name === id);
+	// console.log('dog', d);
+	return d;
+}

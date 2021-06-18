@@ -1,28 +1,64 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { dogs } from '../helpers/dogs';
+import { dogs, getDog } from '../helpers/dogs';
+import { API_URL } from '../config/index.js';
+import { useState, useEffect } from 'react';
 
-function DogDetails() {
+export async function getServerSideProps(context) {
+	const { params } = context;
+	// console.log(params);
+	const res = await fetch(`${API_URL}/api/dogs`);
+	const dogs = await res.json();
+
+	return {
+		props: { dogs },
+	};
+}
+
+export default function DogDetails(props) {
+	const { dogs } = props;
+	const [data, setData] = useState(dogs[0]);
+
 	const router = useRouter();
 	const id = router.query.dog;
 
-	function getDog(id) {
-		let d = dogs.find((dog) => dog.name === id);
-		// console.log('dog', d);
-		return d;
-	}
-
 	let dog = getDog(id);
-	console.log(dog);
-	if (!dog) {
-		return 'tew';
-	}
 
+	// async function getApiData() {
+	// 	const res = await fetch(`${API_URL}/api/dogs`);
+	// 	const dg = await res.json();
+	// 	return await dg;
+	// }
+
+	// useEffect(() => {
+	// 	const freshdogs = getApiData();
+	// 	console.log(freshdogs);
+	// 	setData(freshdogs);
+	// }, []);
+
+	if (!data && !dog) {
+		return '...loading';
+	}
+	//pre-render
+	return (
+		<>
+			<h1>{data.name}</h1>
+			<p>{data.facts}</p>
+		</>
+	);
+	//after component mount
 	return (
 		<div className='DogDetails row justify-content-center mt-5'>
 			<div className='col-11 col-lg-5'>
 				<div className='DogDetails-card card'>
-					{/* <img className='card-img-top' src={dog.src} alt={dog.name} /> */}
+					<Image
+						className='card-img-top'
+						src={dog.src}
+						alt={dog.name}
+						width='250'
+						height='300'
+					/>
 					<div className='card-body'>
 						<h2 className='card-title'>{dog.name}</h2>
 						<h4 className='card-subtitle text-muted'>{dog.age} years old</h4>
@@ -44,5 +80,3 @@ function DogDetails() {
 		</div>
 	);
 }
-
-export default DogDetails;
