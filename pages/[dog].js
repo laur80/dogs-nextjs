@@ -44,6 +44,7 @@ export default function DogDetails(props) {
 	return (
 		<>
 			<h1>{data.name}</h1>
+			<Image src={data.src} alt={data.name} width='250' height='300' />
 			<p>{data.facts}</p>
 		</>
 	);
