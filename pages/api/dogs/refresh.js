@@ -1,4 +1,4 @@
-const { dogs } = require('./data.json');
+const { dogs } = require('./refresh.json');
 
 export default (req, res) => {
 	if (req.method === 'GET') {

@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { dogs, getDog } from '../helpers/dogs';
+import { getDog } from '../helpers/dogs';
 import { API_URL } from '../config/index.js';
 import { useState, useEffect } from 'react';
 
@@ -26,14 +26,14 @@ export default function DogDetails(props) {
 	let dog = getDog(id);
 
 	// async function getApiData() {
-	// 	const res = await fetch(`${API_URL}/api/dogs`);
+	// 	const res = await fetch(`${API_URL}/api/dogs/refresh`);
 	// 	const dg = await res.json();
-	// 	return await dg;
+	// 	return dg;
 	// }
 
-	// useEffect(() => {
-	// 	const freshdogs = getApiData();
-	// 	console.log(freshdogs);
+	// useEffect(async () => {
+	// 	const freshdogs = await getApiData();
+
 	// 	setData(freshdogs);
 	// }, []);
 
