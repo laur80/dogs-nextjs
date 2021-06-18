@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { API_URL } from '../config/index.js';
 // import { dogs } from '../helpers/dogs';
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
 	const { params } = context;
 	// console.log(params);
 	const res = await fetch(`${API_URL}/api/dogs`);

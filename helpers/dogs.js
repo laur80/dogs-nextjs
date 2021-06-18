@@ -22,7 +22,7 @@ export const dogs = [
 	{
 		name: 'tubby',
 		age: 4,
-		src: '/tubby.png',
+		src: '/tubby.jpg',
 		facts: [
 			'Tubby is not the brightest dog',
 			'Tubby does not like walks or exercise.',
