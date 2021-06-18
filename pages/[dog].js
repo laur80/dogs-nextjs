@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react';
 
 export async function getServerSideProps(context) {
 	const { params } = context;
-	// console.log(params);
+	console.log(params);
 	const res = await fetch(`${API_URL}/api/dogs`);
 	const dogs = await res.json();
 
@@ -37,9 +37,9 @@ export default function DogDetails(props) {
 	// 	setData(freshdogs);
 	// }, []);
 
-	if (!data && !dog) {
-		return '...loading';
-	}
+	// if (!data && !dog) {
+	// 	return '...loading';
+	// }
 	//pre-render
 	return (
 		<>

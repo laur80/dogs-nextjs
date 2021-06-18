@@ -1,8 +1,21 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { dogs } from '../helpers/dogs';
+import { API_URL } from '../config/index.js';
+// import { dogs } from '../helpers/dogs';
 
-function DogList() {
+export async function getServerSideProps(context) {
+	const { params } = context;
+	// console.log(params);
+	const res = await fetch(`${API_URL}/api/dogs`);
+	const dogs = await res.json();
+
+	return {
+		props: { dogs },
+	};
+}
+
+function DogList(props) {
+	const { dogs } = props;
 	return (
 		<>
 			<div className='DogList'>
