@@ -1,0 +1,34 @@
+{
+	"dogs": [
+		{
+			"name": "tubby",
+			"age": 4,
+			"src": "/tubby.jpg",
+			"facts": [
+				"Tubby is not the brightest dog",
+				"Tubby does not like walks or exercise.",
+				"Tubby loves eating food."
+			]
+		},
+		{
+			"name": "whiskey",
+			"age": 5,
+			"src": "/whiskey.png",
+			"facts": [
+				"Whiskey loves eating popcorn.",
+				"Whiskey is a terrible guard dog.",
+				"Whiskey wants to cuddle with you!"
+			]
+		},
+		{
+			"name": "hazel",
+			"age": 3,
+			"src": "/hazel.png",
+			"facts": [
+				"Hazel has soooo much energy!",
+				"Hazel is highly intelligent.",
+				"Hazel loves people more than dogs."
+			]
+		}
+	]
+}

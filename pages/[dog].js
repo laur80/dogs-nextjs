@@ -1,54 +1,62 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
-import { getDog } from '../helpers/dogs';
+// import { useRouter } from 'next/router';
+// import { getDog } from '../helpers/dgs';
 import { API_URL } from '../config/index.js';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { buildDogsFilePath, extractDogs } from './api/dogs';
 
-export async function getServerSideProps(context) {
+// 1st Method: prepare data/props on SS for function DogDetails
+
+// export async function getServerSideProps(context) {
+// 	const { params } = context;
+// 	const name = params.dog;
+// 	let filename = 'dt.json';
+// 	const filePath = buildDogsFilePath(filename);
+// 	const dogs = extractDogs(filePath);
+
+// 	const dg = dogs.dogs.find((dog) => dog.name === name);
+// 	// console.log(dg);
+
+// 	return {
+// 		props: { dg },
+// 	};
+// }
+
+// 2nd Methos: prepare data/props and dinamic paths for Static pages
+
+export async function getStaticProps(context) {
 	const { params } = context;
-	console.log(params);
-	const res = await fetch(`${API_URL}/api/dogs`);
-	const dogs = await res.json();
+	const name = params.dog;
+	let filename = 'dt.json';
+	const filePath = buildDogsFilePath(filename);
+	const dogs = extractDogs(filePath);
+
+	const dg = dogs.dogs.find((dog) => dog.name === name);
 
 	return {
-		props: { dogs },
+		props: { dg },
 	};
 }
 
+export async function getStaticPaths() {
+	return {
+		paths: [
+			{ params: { dog: 'hazel' } },
+			{ params: { dog: 'tubby' } },
+			{ params: { dog: 'whiskey' } },
+		],
+		fallback: false,
+	};
+}
+
+//////////////////////////////////////////////////
+
 export default function DogDetails(props) {
-	const { dogs } = props;
-	const [data, setData] = useState(dogs[0]);
+	const [dog, setDog] = useState(props.dg);
 
-	const router = useRouter();
-	const id = router.query.dog;
-
-	let dog = getDog(id);
-
-	// async function getApiData() {
-	// 	const res = await fetch(`${API_URL}/api/dogs/refresh`);
-	// 	const dg = await res.json();
-	// 	return dg;
-	// }
-
-	// useEffect(async () => {
-	// 	const freshdogs = await getApiData();
-
-	// 	setData(freshdogs);
-	// }, []);
-
-	// if (!data && !dog) {
-	// 	return '...loading';
-	// }
+	if (!dog) return '...loading';
 	//pre-render
-	return (
-		<>
-			<h1>{data.name}</h1>
-			<Image src={data.src} alt={data.name} width='250' height='300' />
-			<p>{data.facts}</p>
-		</>
-	);
-	//after component mount
 	return (
 		<div className='DogDetails row justify-content-center mt-5'>
 			<div className='col-11 col-lg-5'>
@@ -57,7 +65,7 @@ export default function DogDetails(props) {
 						className='card-img-top'
 						src={dog.src}
 						alt={dog.name}
-						width='250'
+						width='80'
 						height='300'
 					/>
 					<div className='card-body'>
