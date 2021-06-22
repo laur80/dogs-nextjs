@@ -5,6 +5,7 @@ import { API_URL } from '../config/index.js';
 import useSWR from 'swr';
 import { buildDogsFilePath, extractDogs } from './api/dogs';
 import { useState, useEffect } from 'react';
+import hazel from '../public/hazel.png';
 
 export async function getStaticProps(context) {
 	// const { params } = context;
@@ -42,7 +43,7 @@ function DogList(props) {
 				<div className='row'>
 					{dogs.map((d) => (
 						<div className='Dog col-lg-4 text-center' key={d.name}>
-							<Image src={d.src} alt={d.name} width='250' height='300' />
+							<Image src={hazel} alt={d.name} />
 							<h3 className='mt-3'>
 								<Link href={`/${d.name}`}>
 									<a className='underline'>{d.name}</a>
