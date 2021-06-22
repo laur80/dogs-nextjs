@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import Head from 'next/head';
 // import { useRouter } from 'next/router';
 // import { getDog } from '../helpers/dgs';
 import { API_URL } from '../config/index.js';
@@ -15,12 +16,13 @@ import { buildDogsFilePath, extractDogs } from './api/dogs';
 // 	const filePath = buildDogsFilePath(filename);
 // 	const dogs = extractDogs(filePath);
 
+// 	const dgs = dogs.dogs;
+
 // 	const dg = dogs.dogs.find((dog) => dog.name === name);
-// 	// console.log(dg);
 
 // 	return {
-// 		props: { dg },
-// 	};
+// 		props: { dg, dgs },
+// }
 // }
 
 // 2nd Methos: prepare data/props and dinamic paths for Static pages
@@ -31,11 +33,12 @@ export async function getStaticProps(context) {
 	let filename = 'dt.json';
 	const filePath = buildDogsFilePath(filename);
 	const dogs = extractDogs(filePath);
+	const dgs = dogs.dogs;
 
 	const dg = dogs.dogs.find((dog) => dog.name === name);
 
 	return {
-		props: { dg },
+		props: { dg, dgs },
 	};
 }
 
@@ -58,34 +61,43 @@ export default function DogDetails(props) {
 	if (!dog) return '...loading';
 	//pre-render
 	return (
-		<div className='DogDetails row justify-content-center mt-5'>
-			<div className='col-11 col-lg-5'>
-				<div className='DogDetails-card card'>
-					<Image
-						className='card-img-top'
-						src={dog.src}
-						alt={dog.name}
-						width='80'
-						height='300'
-					/>
-					<div className='card-body'>
-						<h2 className='card-title'>{dog.name}</h2>
-						<h4 className='card-subtitle text-muted'>{dog.age} years old</h4>
-					</div>
-					<ul className='list-group list-group-flush'>
-						{dog.facts.map((fact, i) => {
-							<li className='list-group-item' key={i}>
-								{fact}
-							</li>;
-						})}
-					</ul>
-					<div className='card-body'>
-						<Link href='/'>
-							<a className='btn btn-info'>Go Back</a>
-						</Link>
+		<>
+			<Head>
+				<title>{dog.name}</title>
+				<meta charSet='UTF-8' />
+				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+				<meta name='description' content={dog.src} />
+				<meta name='keywords' content='dog' />
+			</Head>
+			<div className='DogDetails row justify-content-center mt-5'>
+				<div className='col-11 col-lg-5'>
+					<div className='DogDetails-card card'>
+						<Image
+							className='card-img-top'
+							src={dog.src}
+							alt={dog.name}
+							width='80'
+							height='300'
+						/>
+						<div className='card-body'>
+							<h2 className='card-title'>{dog.name}</h2>
+							<h4 className='card-subtitle text-muted'>{dog.age} years old</h4>
+						</div>
+						<ul className='list-group list-group-flush'>
+							{dog.facts.map((fact, i) => {
+								<li className='list-group-item' key={i}>
+									{fact}
+								</li>;
+							})}
+						</ul>
+						<div className='card-body'>
+							<Link href='/'>
+								<a className='btn btn-info'>Go Back</a>
+							</Link>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</>
 	);
 }
