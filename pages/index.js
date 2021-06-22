@@ -21,18 +21,18 @@ export async function getStaticProps(context) {
 function DogList(props) {
 	const [dogs, setDogs] = useState(props.dogs.dogs);
 
-	const { data, error } = useSWR(`${API_URL}/api/dogs`);
+	// const { data, error } = useSWR(`${API_URL}/api/dogs`);
 
-	useEffect(() => {
-		if (data) {
-			// console.log(data.dogs);
-			setDogs(data.dogs);
-		}
-	}, [data]);
+	// useEffect(() => {
+	// 	if (data) {
+	// 		// console.log(data.dogs);
+	// 		setDogs(data.dogs);
+	// 	}
+	// }, [data]);
 
-	if (error) return <p>Failed to load.</p>;
+	// if (error) return <p>Failed to load.</p>;
 
-	if (!dogs && !data) return '...loading';
+	if (!dogs) return '...loading';
 
 	return (
 		<>
