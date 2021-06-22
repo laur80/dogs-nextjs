@@ -50,7 +50,7 @@ function DogList(props) {
 									width={100}
 									height={100}
 									layout='responsive'
-									eager='true'
+									// eager='true'
 								/>
 								<h3 className='mt-3'>
 									<Link href={`/${d.name}`}>
