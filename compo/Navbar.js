@@ -12,44 +12,33 @@ function Navbar({ dogs, title, keywords, description, children }) {
 	));
 	// console.log('nav', dogs);
 	return (
-		<>
-			<Head>
-				<title>{title}</title>
-				<meta charSet='UTF-8' />
-				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
-				<meta name='description' content={description} />
-				<meta name='keywords' content={keywords} />
-			</Head>
+		<nav className='navbar navbar-expand-lg navbar-dark App-bg'>
+			<Link href='/'>
+				<a className='navbar-brand'>Dog App</a>
+			</Link>
 
-			<nav className='navbar navbar-expand-lg navbar-dark bg-dark'>
-				<Link className='navbar-brand' href='/'>
-					Dog App
-				</Link>
-
-				<button
-					className='navbar-toggler'
-					type='button'
-					data-toggle='collapse'
-					data-target='#navbarNav'
-					aria-controls='navbarNav'
-					aria-expanded='false'
-					aria-label='Toggle navigation'
-				>
-					<span className='navbar-toggler-icon' />
-				</button>
-				<div className='collapse navbar-collapse' id='navbarNav'>
-					<ul className='navbar-nav'>
-						<li className='nav-item'>
-							<Link href='/'>
-								<a className='nav-link'>Home</a>
-							</Link>
-							<h1>dogs</h1>
-						</li>
-						{dogLinks}
-					</ul>
-				</div>
-			</nav>
-		</>
+			<button
+				className='navbar-toggler'
+				type='button'
+				data-bs-toggle='collapse'
+				data-bs-target='#navbarNav'
+				aria-controls='navbarNav'
+				aria-expanded='false'
+				aria-label='Toggle navigation'
+			>
+				<span className='navbar-toggler-icon'></span>
+			</button>
+			<div className='collapse navbar-collapse' id='navbarNav'>
+				<ul className='navbar-nav'>
+					<li className='nav-item'>
+						<Link href='/'>
+							<a className='nav-link'>Home</a>
+						</Link>
+					</li>
+					{dogLinks}
+				</ul>
+			</div>
+		</nav>
 	);
 
 	Navbar.defaultProps = {

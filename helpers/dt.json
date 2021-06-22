@@ -1,9 +1,9 @@
 {
 	"dogs": [
 		{
-			"name": "whiskey",
+			"name": "Whiskey",
 			"age": 5,
-			"src": "/whiskey.png",
+			"src": "/whiskey.jpg",
 			"facts": [
 				"Whiskey loves eating popcorn.",
 				"Whiskey is a terrible guard dog.",
@@ -11,9 +11,9 @@
 			]
 		},
 		{
-			"name": "hazel",
+			"name": "Hazel",
 			"age": 3,
-			"src": "/hazel.png",
+			"src": "/hazel.jpg",
 			"facts": [
 				"Hazel has soooo much energy!",
 				"Hazel is highly intelligent.",
@@ -21,7 +21,7 @@
 			]
 		},
 		{
-			"name": "tubby",
+			"name": "Tubby",
 			"age": 4,
 			"src": "/tubby.jpg",
 			"facts": [
