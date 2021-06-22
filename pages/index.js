@@ -33,7 +33,6 @@ function DogList(props) {
 	if (error) return <p>Failed to load.</p>;
 
 	if (!dogs && !data) return '...loading';
-
 	return (
 		<>
 			<Navbar dogs={dogs} />
