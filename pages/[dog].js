@@ -46,49 +46,43 @@ const data = [
 
 // 1st Method: prepare data/props on SS for function DogDetails
 
-export async function getServerSideProps(context) {
-	// console.log('lp', data);
+// export async function getServerSideProps(context) {
+// 	// console.log('lp', data);
+// 	// const filePath = buildDogsFilePath(filename);
+// 	// const dogs = extractDogs(filePath);
+// 	// const dgs = dogs.dogs;
+// 	// let filename = 'dt.json';
+// 	const { params } = context;
+// 	const name = params.dog;
+// 	const dg = data.find((dog) => dog.name === name);
+
+// 	return {
+// 		props: { dg },
+// 	};
+// }
+
+// 2nd Methos: prepare data/props and dinamic paths for Static pages
+
+export async function getStaticProps(context) {
 	const { params } = context;
 	const name = params.dog;
-	// let filename = 'dt.json';
-	// const filePath = buildDogsFilePath(filename);
-	// const dogs = extractDogs(filePath);
-	// const dgs = dogs.dogs;
-
 	const dg = data.find((dog) => dog.name === name);
-	// console.log('fff', dg);
 
 	return {
 		props: { dg },
 	};
 }
 
-// 2nd Methos: prepare data/props and dinamic paths for Static pages
-
-// export async function getStaticProps(context) {
-// 	const { params } = context;
-// 	const name = params.dog;
-// 	let filename = 'dt.json';
-// 	const filePath = buildDogsFilePath(filename);
-// 	const dogs = extractDogs(filePath);
-// const dgs =dogs.dogs
-// 	const dg = dogs.dogs.find((dog) => dog.name === name);
-
-// 	return {
-// 		props: { dg,dgs },
-// 	};
-// }
-
-// export async function getStaticPaths() {
-// 	return {
-// 		paths: [
-// 			{ params: { dog: 'hazel' } },
-// 			{ params: { dog: 'tubby' } },
-// 			{ params: { dog: 'whiskey' } },
-// 		],
-// 		fallback: false,
-// 	};
-// }
+export async function getStaticPaths() {
+	return {
+		paths: [
+			{ params: { dog: 'Hazel' } },
+			{ params: { dog: 'Tubby' } },
+			{ params: { dog: 'Whiskey' } },
+		],
+		fallback: false,
+	};
+}
 
 //////////////////////////////////////////////////
 
