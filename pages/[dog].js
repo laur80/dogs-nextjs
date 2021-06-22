@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import Navbar from '../compo/Navbar';
 // import { useRouter } from 'next/router';
 // import { getDog } from '../helpers/dgs';
 import { API_URL } from '../config/index.js';
@@ -58,6 +59,8 @@ export default function DogDetails(props) {
 	if (!dog) return '...loading';
 	//pre-render
 	return (
+		<>
+		<Navbar/>
 		<div className='DogDetails row justify-content-center mt-5'>
 			<div className='col-11 col-lg-5'>
 				<div className='DogDetails-card card'>
@@ -87,5 +90,6 @@ export default function DogDetails(props) {
 				</div>
 			</div>
 		</div>
+		</>
 	);
 }

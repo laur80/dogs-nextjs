@@ -6,19 +6,11 @@ import useSWR from 'swr';
 import { buildDogsFilePath, extractDogs } from './api/dogs';
 import { useState, useEffect } from 'react';
 
-<<<<<<< HEAD
-export async function getServerSideProps(context) {
-	const { params } = context;
-	// console.log(params);
-	const res = await fetch(`${API_URL}/api/dogs`);
-	const dogs = await res.json();
-=======
 export async function getStaticProps(context) {
 	// const { params } = context;
 	let filename = 'dt.json';
 	const filePath = buildDogsFilePath(filename);
 	const dogs = extractDogs(filePath);
->>>>>>> main
 
 	return {
 		props: { dogs },
