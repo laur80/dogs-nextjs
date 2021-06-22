@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '../compo/Navbar';
-import { API_URL } from '../config/index.js';
 import useSWR from 'swr';
 import { buildDogsFilePath, extractDogs } from './api/dogs';
 import { useState, useEffect } from 'react';
-import hazel from '../public/hazel.png';
+// import { API_URL } from '../config/index.js';
+// import hazel from '../public/hazel.jpg';
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
 	// const { params } = context;
 	let filename = 'dt.json';
 	const filePath = buildDogsFilePath(filename);
@@ -43,7 +43,15 @@ function DogList(props) {
 				<div className='row'>
 					{dogs.map((d) => (
 						<div className='Dog col-lg-4 text-center' key={d.name}>
-							<Image src={hazel} alt={d.name} />
+							<Image
+								className='image'
+								src={d.src}
+								alt={d.name}
+								width={100}
+								height={100}
+								layout='responsive'
+								eager='true'
+							/>
 							<h3 className='mt-3'>
 								<Link href={`/${d.name}`}>
 									<a className='underline'>{d.name}</a>
