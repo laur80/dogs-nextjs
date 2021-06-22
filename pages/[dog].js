@@ -7,6 +7,7 @@ import Head from 'next/head';
 import { API_URL } from '../config/index.js';
 import { useState } from 'react';
 import { buildDogsFilePath, extractDogs } from './api/dogs';
+import hazel from '../public/hazel.png';
 
 // 1st Method: prepare data/props on SS for function DogDetails
 
@@ -72,13 +73,7 @@ export default function DogDetails(props) {
 			<div className='DogDetails row justify-content-center mt-5'>
 				<div className='col-11 col-lg-5'>
 					<div className='DogDetails-card card'>
-						<Image
-							className='card-img-top'
-							src={dog.src}
-							alt={dog.name}
-							width='80'
-							height='300'
-						/>
+						<Image className='card-img-top' src={hazel} alt={dog.name} />
 						<div className='card-body'>
 							<h2 className='card-title'>{dog.name}</h2>
 							<h4 className='card-subtitle text-muted'>{dog.age} years old</h4>
