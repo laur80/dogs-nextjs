@@ -5,6 +5,7 @@ import Navbar from '../compo/Navbar';
 // import useSWR from 'swr';
 import { buildDogsFilePath, extractDogs } from './api/dogs';
 import { useState, useEffect } from 'react';
+import hazel from '../public/hazel.jpg';
 
 export async function getStaticProps(context) {
 	// const { params } = context;
@@ -39,10 +40,18 @@ function DogList(props) {
 			<div className='container'>
 				<div className='DogList'>
 					<h1 className='display-1 text-center mt-3 mb-5'>Dog List!</h1>
-					<div className='row'>
+					<div className='row justify-content-around'>
 						{dogs.map((d) => (
 							<div className='Dog col-lg-4 text-center' key={d.name}>
-								<img src={d.src} alt={d.name} />
+								<Image
+									src={d.src}
+									alt={d.name}
+									className='image'
+									width={100}
+									height={100}
+									layout='responsive'
+									eager='true'
+								/>
 								<h3 className='mt-3'>
 									<Link href={`/${d.name}`}>
 										<a className='underline'>{d.name}</a>
