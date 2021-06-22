@@ -1,11 +1,11 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '../compo/Navbar';
-// import { API_URL } from '../config/index.js';
-// import useSWR from 'swr';
 import { buildDogsFilePath, extractDogs } from './api/dogs';
 import { useState, useEffect } from 'react';
 import hazel from '../public/hazel.jpg';
+// import { API_URL } from '../config/index.js';
+// import useSWR from 'swr';
 
 export async function getStaticProps(context) {
 	// const { params } = context;

@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import Image from 'next/image';
-// import Navbar from '../compo/Navbar';
+import Navbar from '../compo/Navbar';
 import Head from 'next/head';
-// import { useRouter } from 'next/router';
-// import { getDog } from '../helpers/dgs';
 import { API_URL } from '../config/index.js';
 import { useState } from 'react';
 import { buildDogsFilePath, extractDogs } from './api/dogs';
+// import { useRouter } from 'next/router';
+// import { getDog } from '../helpers/dgs';
 // import hazel from '../public/hazel.jpg';
 
 // 1st Method: prepare data/props on SS for function DogDetails
@@ -70,25 +70,38 @@ export default function DogDetails(props) {
 				<meta name='description' content={dog.src} />
 				<meta name='keywords' content='dog' />
 			</Head>
-			<div className='DogDetails row justify-content-center mt-5'>
-				<div className='col-11 col-lg-5'>
-					<div className='DogDetails-card card'>
-						<Image className='card-img-top' src={dog.src} alt={dog.name} />
-						<div className='card-body'>
-							<h2 className='card-title'>{dog.name}</h2>
-							<h4 className='card-subtitle text-muted'>{dog.age} years old</h4>
-						</div>
-						<ul className='list-group list-group-flush'>
-							{dog.facts.map((fact, i) => {
-								<li className='list-group-item' key={i}>
-									{fact}
-								</li>;
-							})}
-						</ul>
-						<div className='card-body'>
-							<Link href='/'>
-								<a className='btn btn-info'>Go Back</a>
-							</Link>
+			<Navbar dogs={dogs} />
+			<div className='container'>
+				<div className='DogDetails row justify-content-center mt-5'>
+					<div className='col-11 col-lg-5'>
+						<div className='DogDetails-card card'>
+							<Image
+								className='card-img-top img'
+								src={dog.src}
+								alt={dog.name}
+								width={100}
+								height={100}
+								layout='responsive'
+								eager='true'
+							/>
+							<div className='card-body'>
+								<h2 className='card-title'>{dog.name}</h2>
+								<h4 className='card-subtitle text-muted'>
+									{dog.age} years old
+								</h4>
+							</div>
+							<ul className='list-group list-group-flush'>
+								{dog.facts.map((fact, i) => {
+									<li className='list-group-item' key={i}>
+										{fact}
+									</li>;
+								})}
+							</ul>
+							<div className='card-body'>
+								<Link href='/'>
+									<a className='btn btn-info'>Go Back</a>
+								</Link>
+							</div>
 						</div>
 					</div>
 				</div>
