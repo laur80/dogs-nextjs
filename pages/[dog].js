@@ -103,8 +103,8 @@ export default function DogDetails(props) {
 				<title>{dog.name}</title>
 				<meta charSet='UTF-8' />
 				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
-				<meta name='description' content={dog.src} />
-				<meta name='keywords' content='dog' />
+				<meta name='keywords' content={dog.name} />
+				<meta name='description' content={dog.facts} />
 			</Head>
 			<Navbar dogs={data} />
 			<div className='container'>

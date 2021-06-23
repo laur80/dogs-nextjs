@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import Navbar from '../compo/Navbar';
+import Head from 'next/head';
 import { useState } from 'react';
 import hazel from '../public/hazel.jpg';
 import tubby from '../public/tubby.jpg';
@@ -55,6 +56,16 @@ function DogList(props) {
 	if (!dogs) return '...loading';
 	return (
 		<>
+			<Head>
+				<title>Dogs shelter</title>
+				<meta charSet='UTF-8' />
+				<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+				<meta
+					name='keywords'
+					content='dogs, dogs shelter, smart dogs, cute dogs'
+				/>
+				<meta name='description' content='Find the right dog for you' />
+			</Head>
 			<Navbar dogs={dogs} />
 			<div className='container'>
 				<div className='DogList'>
