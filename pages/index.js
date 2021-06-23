@@ -6,6 +6,7 @@ import { useState } from 'react';
 import hazel from '../public/hazel.jpg';
 import tubby from '../public/tubby.jpg';
 import whiskey from '../public/whiskey.jpg';
+// import useDimensions from 'react-cool-dimensions';
 // import { buildDogsFilePath, extractDogs } from './api/dogs';
 // import { API_URL } from '../config/index.js';
 // import useSWR from 'swr';
@@ -53,6 +54,11 @@ export async function getStaticProps(context) {
 function DogList(props) {
 	const [dogs, setDogs] = useState(props.data);
 
+	// const { observe, width } = useDimensions({
+	// 	breakpoints: { XS: 0, SM: 320, MD: 480, LG: 640 },
+	// 	updateOnBreakpointChange: true,
+	// });
+
 	if (!dogs) return '...loading';
 	return (
 		<>
@@ -74,14 +80,17 @@ function DogList(props) {
 					</h1>
 					<div className='row justify-content-around'>
 						{dogs.map((d) => (
-							<div className='Dog col-lg-4 text-center' key={d.name}>
+							<div className='Dog col-lg-3 col-sm-3 text-center' key={d.name}>
+								{/* <img className='image' alt={d.name} src='/whiskey.jpg' /> */}
 								<Image
+									className='image'
 									src={d.src}
 									alt={d.name}
-									className='image'
-									width={100}
-									height={100}
+									width='260px'
+									height='260px'
+									// sizes='(min-width:568px) 33vw
 									layout='responsive'
+
 									// eager='true'
 								/>
 								<h3 className='mt-3'>
