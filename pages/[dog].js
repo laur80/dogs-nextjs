@@ -61,6 +61,9 @@ export async function getStaticProps(context) {
 	const { params } = context;
 	const name = params.dog;
 	const dg = data.find((dog) => dog.name === name);
+	if (!dg) {
+		return { notFound: true };
+	}
 
 	return {
 		props: { dog: dg },
@@ -83,7 +86,7 @@ export default function DogDetails(props) {
 	// const [dog, setDog] = useState(dg);
 	const { dog } = props;
 	let dts = dog.facts;
-	console.log(dog);
+	// console.log(dog);
 
 	const details = dts.map((fact, i) => (
 		<li className='list-group-item' key={i}>
@@ -92,7 +95,7 @@ export default function DogDetails(props) {
 	));
 	// console.log('lol', dog.src);
 
-	if (!data) return '...loading';
+	if (!dog) return '...loading';
 
 	return (
 		<>
