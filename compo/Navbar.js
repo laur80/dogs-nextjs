@@ -42,7 +42,7 @@ function Navbar({ dogs, title, keywords, description, children }) {
 	);
 
 	Navbar.defaultProps = {
-		title: 'Dogs shelter| Find the cutest and smart dogs',
+		title: 'Dogs shelter| Find the cutest and smart dog',
 		description: 'Find the right dog for you',
 		keywords: 'dogs, dogs shelter, smart dogs, cute dogs',
 	};
