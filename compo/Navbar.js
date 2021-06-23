@@ -14,7 +14,7 @@ function Navbar({ dogs, title, keywords, description, children }) {
 	return (
 		<nav className='navbar navbar-expand-lg navbar-dark App-bg'>
 			<Link href='/'>
-				<a className='navbar-brand'>Dog App</a>
+				<a className='navbar-brand ms-3'>Dog App</a>
 			</Link>
 
 			<button

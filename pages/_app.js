@@ -1,9 +1,8 @@
 import '../styles/globals.css';
-// import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import Head from 'next/head';
-// import Navbar from '../compo/Navbar';
 import Script from 'next/script';
+// import Navbar from '../compo/Navbar';
 
 function MyApp({ Component, pageProps }) {
 	return (

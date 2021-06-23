@@ -3,19 +3,18 @@ import Image from 'next/image';
 import Navbar from '../compo/Navbar';
 import Head from 'next/head';
 import { useState } from 'react';
-// import { API_URL } from '../config/index.js';
-// import { buildDogsFilePath, extractDogs } from './api/dogs';
-// import { useRouter } from 'next/router';
-// import { getDog } from '../helpers/dgs';
 import hazel from '../public/hazel.jpg';
 import tubby from '../public/tubby.jpg';
 import whiskey from '../public/whiskey.jpg';
+// import { API_URL } from '../config/index.js';
+// import { buildDogsFilePath, extractDogs } from './api/dogs';
+// import { useRouter } from 'next/router';
 
 const data = [
 	{
 		name: 'Whiskey',
 		age: 5,
-		src: hazel,
+		src: whiskey,
 		facts: [
 			'Whiskey loves eating popcorn.',
 			'Whiskey is a terrible guard dog.',
@@ -25,7 +24,7 @@ const data = [
 	{
 		name: 'Hazel',
 		age: 3,
-		src: whiskey,
+		src: hazel,
 		facts: [
 			'Hazel has soooo much energy!',
 			'Hazel is highly intelligent.',
@@ -47,17 +46,12 @@ const data = [
 // 1st Method: prepare data/props on SS for function DogDetails
 
 // export async function getServerSideProps(context) {
-// 	// console.log('lp', data);
-// 	// const filePath = buildDogsFilePath(filename);
-// 	// const dogs = extractDogs(filePath);
-// 	// const dgs = dogs.dogs;
-// 	// let filename = 'dt.json';
 // 	const { params } = context;
 // 	const name = params.dog;
 // 	const dg = data.find((dog) => dog.name === name);
 
 // 	return {
-// 		props: { dg },
+// 			props: { dog: dg },
 // 	};
 // }
 
@@ -69,17 +63,16 @@ export async function getStaticProps(context) {
 	const dg = data.find((dog) => dog.name === name);
 
 	return {
-		props: { dg },
+		props: { dog: dg },
 	};
 }
 
 export async function getStaticPaths() {
+	const ids = data.map((i) => i.name);
+	const paths = ids.map((id) => ({ params: { dog: id } }));
+	// console.log(params);
 	return {
-		paths: [
-			{ params: { dog: 'Hazel' } },
-			{ params: { dog: 'Tubby' } },
-			{ params: { dog: 'Whiskey' } },
-		],
+		paths: paths,
 		fallback: false,
 	};
 }
@@ -87,8 +80,10 @@ export async function getStaticPaths() {
 //////////////////////////////////////////////////
 
 export default function DogDetails(props) {
-	const [dog, setDog] = useState(props.dg);
+	// const [dog, setDog] = useState(dg);
+	const { dog } = props;
 	let dts = dog.facts;
+	console.log(dog);
 
 	const details = dts.map((fact, i) => (
 		<li className='list-group-item' key={i}>
