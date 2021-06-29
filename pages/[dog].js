@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import Image from 'next/image';
+// import Image from 'next/image';
 import Navbar from '../compo/Navbar';
 import Head from 'next/head';
 import { useState } from 'react';
@@ -12,36 +12,37 @@ import whiskey from '../public/whiskey.jpg';
 
 const data = [
 	{
-		name: 'Whiskey',
-		age: 5,
-		src: whiskey,
-		facts: [
-			'Whiskey loves eating popcorn.',
-			'Whiskey is a terrible guard dog.',
-			'Whiskey wants to cuddle with you!',
-		],
+	  name: "Whiskey",
+	  age: 5,
+	  src: '/whiskey.jpg' ,
+	  facts: [
+		"Whiskey loves eating popcorn.",
+		"Whiskey is a terrible guard dog.",
+		"Whiskey wants to cuddle with you!",
+	  ],
 	},
 	{
-		name: 'Hazel',
-		age: 3,
-		src: hazel,
-		facts: [
-			'Hazel has soooo much energy!',
-			'Hazel is highly intelligent.',
-			'Hazel loves people more than dogs.',
-		],
+	  name: "Hazel",
+	  age: 3,
+	  src: '/hazel.jpg' ,
+	  facts: [
+		"Hazel has soooo much energy!",
+		"Hazel is highly intelligent.",
+		"Hazel loves people more than dogs.",
+	  ],
 	},
 	{
-		name: 'Tubby',
-		age: 4,
-		src: tubby,
-		facts: [
-			'Tubby is not the brightest dog',
-			'Tubby does not like walks or exercise.',
-			'Tubby loves eating food.',
-		],
+	  name: "Tubby",
+	  age: 4,
+	  src: '/tubby.jpg' ,
+	  facts: [
+		"Tubby is not the brightest dog",
+		"Tubby does not like walks or exercise.",
+		"Tubby loves eating food.",
+	  ],
 	},
-];
+  ];
+
 
 // 1st Method: prepare data/props on SS for function DogDetails
 
@@ -111,13 +112,13 @@ export default function DogDetails(props) {
 				<div className='DogDetails row justify-content-center mt-5'>
 					<div className='col-11 col-lg-5'>
 						<div className='DogDetails-card card'>
-							<Image
+							<img
 								className='card-img-top img'
 								src={dog.src}
 								alt={dog.name}
-								width={100}
-								height={100}
-								layout='responsive'
+								// width={100}
+								// height={100}
+								// layout='responsive'
 								// eager='true'
 							/>
 							<div className='card-body'>
@@ -132,7 +133,7 @@ export default function DogDetails(props) {
 								<Link href='/'>
 									<a className='btn btn-info'>Go Back</a>
 								</Link>
-							</div>
+							</div>S
 						</div>
 					</div>
 				</div>
